@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Performance Chart Comparison</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Performance Chart Comparison</h1>
+            <p class="subtitle">Analyze variance between two data series</p>
+        </header>
+
+        <div class="input-section">
+            <div class="input-row">
+                <div class="input-group">
+                    <label for="series1Name">Series 1 Name:</label>
+                    <input type="text" id="series1Name" placeholder="e.g., OS 15" value="OS 15">
+                </div>
+                <div class="input-group">
+                    <label for="series1">Series 1 Data:</label>
+                    <input type="text" id="series1" placeholder="Example: 333 333 333 366 333 366 333 333 366 367" value="333 333 333 366 333 366 333 333 366 367">
+                    <span class="helper-text">Enter numbers separated by spaces</span>
+                </div>
+            </div>
+
+            <div class="input-row">
+                <div class="input-group">
+                    <label for="series2Name">Series 2 Name:</label>
+                    <input type="text" id="series2Name" placeholder="e.g., OS 16" value="OS 16">
+                </div>
+                <div class="input-group">
+                    <label for="series2">Series 2 Data:</label>
+                    <input type="text" id="series2" placeholder="Example: 367 367 367 366 333 367 367 367 367 367" value="367 367 367 366 333 367 367 367 367 367">
+                    <span class="helper-text">Enter numbers separated by spaces</span>
+                </div>
+            </div>
+
+            <button id="compareBtn" class="btn-primary">Compare</button>
+        </div>
+
+        <div class="charts-container">
+            <div class="chart-wrapper">
+                <h2>Comparison Chart</h2>
+                <canvas id="comparisonChart"></canvas>
+
+                <div class="chart-stats">
+                    <div class="chart-stat-item">
+                        <span class="chart-stat-label">Average Difference:</span>
+                        <span class="chart-stat-value" id="avgDiff">-</span>
+                    </div>
+                    <div class="chart-stat-item highlight">
+                        <span class="chart-stat-label">Difference Between Series (%):</span>
+                        <span class="chart-stat-value" id="seriesDiffPercent">-</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats-container">
+                <div class="stats-card">
+                    <h3 id="series1Title">Series 1 - Statistics</h3>
+                    <div class="stat-item">
+                        <span class="stat-label">Average Value:</span>
+                        <span class="stat-value" id="avg1">-</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Minimum Value:</span>
+                        <span class="stat-value" id="min1">-</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Maximum Value:</span>
+                        <span class="stat-value" id="max1">-</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Variance (%):</span>
+                        <span class="stat-value" id="variance1">-</span>
+                    </div>
+                </div>
+
+                <div class="stats-card">
+                    <h3 id="series2Title">Series 2 - Statistics</h3>
+                    <div class="stat-item">
+                        <span class="stat-label">Average Value:</span>
+                        <span class="stat-value" id="avg2">-</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Minimum Value:</span>
+                        <span class="stat-value" id="min2">-</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Maximum Value:</span>
+                        <span class="stat-value" id="max2">-</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Variance (%):</span>
+                        <span class="stat-value" id="variance2">-</span>
+                    </div>
+                </div>
+
+                <div class="stats-card comparison-card">
+                    <h3>Conclusion</h3>
+                    <div class="conclusion" id="conclusion">
+                        <p>Click "Compare" to view analysis</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+
