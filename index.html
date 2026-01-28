@@ -29,6 +29,32 @@
             </div>
         </header>
 
+        <!-- Custom Color Modal -->
+        <div id="customColorModal" class="color-modal" style="display: none;">
+            <div class="color-modal-content">
+                <div class="color-modal-header">
+                    <h3>Custom Colors</h3>
+                    <button class="close-modal" onclick="closeCustomColorModal()">×</button>
+                </div>
+                <div class="color-modal-body">
+                    <div class="color-picker-row">
+                        <label for="color1Picker">Series 1 Color:</label>
+                        <input type="color" id="color1Picker" value="#667eea" onchange="document.getElementById('color1Value').textContent = this.value">
+                        <span id="color1Value">#667eea</span>
+                    </div>
+                    <div class="color-picker-row">
+                        <label for="color2Picker">Series 2 Color:</label>
+                        <input type="color" id="color2Picker" value="#f093fb" onchange="document.getElementById('color2Value').textContent = this.value">
+                        <span id="color2Value">#f093fb</span>
+                    </div>
+                </div>
+                <div class="color-modal-footer">
+                    <button class="btn-apply" onclick="applyCustomColors()">Apply</button>
+                    <button class="btn-cancel" onclick="closeCustomColorModal()">Cancel</button>
+                </div>
+            </div>
+        </div>
+
         <div class="input-section">
             <div class="input-row">
                 <div class="input-group">

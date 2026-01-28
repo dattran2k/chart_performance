@@ -72,6 +72,13 @@ const COLOR_SCHEMES = [
         name: 'Black & Yellow',
         series1: createColorConfig(0, 0, 0),         // Pure Black
         series2: createColorConfig(255, 215, 0)      // Gold/Yellow
+    },
+    {
+        id: 'custom',
+        name: 'Custom',
+        series1: createColorConfig(102, 126, 234),   // Default to purple
+        series2: createColorConfig(240, 147, 251),   // Default to pink
+        isCustom: true
     }
 ];
 
@@ -89,5 +96,35 @@ function setColorScheme(schemeId) {
         return true;
     }
     return false;
+}
+
+// Function to update custom colors
+function updateCustomColors(color1Hex, color2Hex) {
+    const rgb1 = hexToRgb(color1Hex);
+    const rgb2 = hexToRgb(color2Hex);
+
+    if (rgb1 && rgb2) {
+        const customScheme = COLOR_SCHEMES.find(s => s.id === 'custom');
+        if (customScheme) {
+            customScheme.series1 = createColorConfig(rgb1.r, rgb1.g, rgb1.b);
+            customScheme.series2 = createColorConfig(rgb2.r, rgb2.g, rgb2.b);
+
+            // Update current COLORS
+            COLORS = {
+                series1: { ...customScheme.series1 },
+                series2: { ...customScheme.series2 }
+            };
+        }
+    }
+}
+
+// Helper function to convert hex to RGB
+function hexToRgb(hex) {
+    const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? {
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16)
+    } : null;
 }
 
