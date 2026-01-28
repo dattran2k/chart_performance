@@ -23,12 +23,125 @@ body {
 
 header {
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     padding-bottom: 20px;
     border-bottom: 3px solid #667eea;
 }
 
-header h1 {
+/* Color Picker Styles */
+.color-picker {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.color-picker label {
+    font-weight: 600;
+    font-size: 14px;
+    color: #333;
+}
+
+.color-options {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.color-option {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 3px solid transparent;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.color-option:hover {
+    transform: scale(1.15);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.color-option.active {
+    border-color: #333;
+    box-shadow: 0 0 0 2px #fff, 0 0 0 4px #333;
+    transform: scale(1.1);
+}
+
+.color-option::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background-color: var(--color1);
+}
+
+.color-option::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    background-color: var(--color2);
+}
+
+.color-option:hover::before,
+.color-option:hover::after {
+    filter: brightness(1.1);
+}
+
+/* Range Toggle Button Styles */
+.range-toggle {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+.btn-toggle {
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.btn-toggle:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(102, 126, 234, 0.4);
+}
+
+.btn-toggle:active {
+    transform: translateY(0);
+}
+
+.btn-toggle.active {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+.toggle-icon {
+    font-size: 16px;
+}
+
+.toggle-text {
+    font-size: 14px;
+}
+
+h1 {
     font-size: 2.5rem;
     color: #667eea;
     margin-bottom: 10px;
